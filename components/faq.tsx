@@ -49,12 +49,12 @@ function FaqItem({ question, answer, isOpen, onToggle, index, isVisible }: FaqIt
     >
       <button
         onClick={onToggle}
-        className="w-full flex items-center justify-between p-5 text-left"
+        className="w-full flex items-center justify-between p-4 sm:p-5 text-left"
         aria-expanded={isOpen}
       >
-        <span className="font-semibold text-foreground pr-4">{question}</span>
+        <span className="font-semibold text-foreground pr-3 sm:pr-4 text-sm sm:text-base">{question}</span>
         <ChevronDown
-          className={`w-5 h-5 text-gold flex-shrink-0 transition-transform duration-300 ${
+          className={`w-4 h-4 sm:w-5 sm:h-5 text-gold flex-shrink-0 transition-transform duration-300 ${
             isOpen ? 'rotate-180' : ''
           }`}
         />
@@ -64,7 +64,7 @@ function FaqItem({ question, answer, isOpen, onToggle, index, isVisible }: FaqIt
           isOpen ? 'max-h-96' : 'max-h-0'
         }`}
       >
-        <p className="px-5 pb-5 text-muted-foreground leading-relaxed">
+        <p className="px-4 sm:px-5 pb-4 sm:pb-5 text-sm sm:text-base text-muted-foreground leading-relaxed">
           {answer}
         </p>
       </div>

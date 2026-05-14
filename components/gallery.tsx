@@ -48,44 +48,44 @@ function Lightbox({ items, currentIndex, onClose, onPrev, onNext }: LightboxProp
   }, [onClose, onPrev, onNext])
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-background/95 backdrop-blur-md">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-background/95 backdrop-blur-md p-4">
       {/* Close Button */}
       <button
         onClick={onClose}
-        className="absolute top-4 right-4 z-10 p-3 bg-card rounded-full hover:bg-secondary transition-colors"
+        className="absolute top-2 right-2 sm:top-4 sm:right-4 z-10 p-2 sm:p-3 bg-card rounded-full hover:bg-secondary transition-colors"
         aria-label="Schließen"
       >
-        <X className="w-6 h-6" />
+        <X className="w-5 h-5 sm:w-6 sm:h-6" />
       </button>
 
       {/* Navigation Buttons */}
       <button
         onClick={onPrev}
-        className="absolute left-4 z-10 p-3 bg-card rounded-full hover:bg-secondary transition-colors"
+        className="absolute left-2 sm:left-4 z-10 p-2 sm:p-3 bg-card rounded-full hover:bg-secondary transition-colors"
         aria-label="Vorheriges Bild"
       >
-        <ChevronLeft className="w-6 h-6" />
+        <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
       </button>
       <button
         onClick={onNext}
-        className="absolute right-4 z-10 p-3 bg-card rounded-full hover:bg-secondary transition-colors"
+        className="absolute right-2 sm:right-4 z-10 p-2 sm:p-3 bg-card rounded-full hover:bg-secondary transition-colors"
         aria-label="Nächstes Bild"
       >
-        <ChevronRight className="w-6 h-6" />
+        <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
       </button>
 
       {/* Image */}
-      <div className="max-w-5xl max-h-[85vh] px-16">
+      <div className="max-w-5xl max-h-[85vh] px-10 sm:px-16 w-full flex flex-col items-center">
         <img
           src={currentItem.src}
           alt={currentItem.title}
-          className="max-w-full max-h-[80vh] object-contain rounded-lg"
+          className="max-w-full max-h-[65vh] sm:max-h-[75vh] object-contain rounded-lg"
           crossOrigin="anonymous"
         />
-        <div className="text-center mt-4">
-          <h3 className="text-xl font-semibold text-foreground">{currentItem.title}</h3>
-          <p className="text-muted-foreground">{currentItem.category}</p>
-          <p className="text-sm text-muted-foreground mt-2">
+        <div className="text-center mt-3 sm:mt-4">
+          <h3 className="text-lg sm:text-xl font-semibold text-foreground">{currentItem.title}</h3>
+          <p className="text-sm sm:text-base text-muted-foreground">{currentItem.category}</p>
+          <p className="text-xs sm:text-sm text-muted-foreground mt-1 sm:mt-2">
             {currentIndex + 1} / {items.length}
           </p>
         </div>
@@ -168,11 +168,11 @@ export function Gallery() {
         </div>
 
         {/* Gallery Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 sm:gap-4">
           {filteredItems.map((item, index) => (
             <div
               key={item.id}
-              className={`group relative overflow-hidden rounded-xl cursor-pointer ${
+              className={`group relative overflow-hidden rounded-lg sm:rounded-xl cursor-pointer ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
               }`}
               style={{ transitionDelay: `${index * 50}ms`, transition: 'all 0.5s ease' }}
@@ -181,13 +181,13 @@ export function Gallery() {
               <img
                 src={item.src}
                 alt={item.title}
-                className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+                className="w-full h-40 sm:h-64 object-cover transition-transform duration-500 group-hover:scale-110"
                 crossOrigin="anonymous"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <div className="absolute bottom-4 left-4 right-4">
-                  <span className="text-gold text-sm font-medium">{item.category}</span>
-                  <h3 className="text-foreground font-semibold">{item.title}</h3>
+              <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-300">
+                <div className="absolute bottom-2 left-2 right-2 sm:bottom-4 sm:left-4 sm:right-4">
+                  <span className="text-gold text-xs sm:text-sm font-medium">{item.category}</span>
+                  <h3 className="text-foreground font-semibold text-sm sm:text-base">{item.title}</h3>
                 </div>
               </div>
             </div>

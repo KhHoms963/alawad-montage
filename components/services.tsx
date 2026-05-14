@@ -119,50 +119,50 @@ function ServiceModal({ service, onClose }: ServiceModalProps) {
       />
       
       {/* Modal */}
-      <div className="relative bg-card border border-border rounded-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+      <div className="relative bg-card border border-border rounded-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto mx-2 sm:mx-4">
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 z-10 p-2 bg-background/80 rounded-full hover:bg-background transition-colors"
+          className="absolute top-2 right-2 sm:top-4 sm:right-4 z-10 p-2 bg-background/80 rounded-full hover:bg-background transition-colors"
           aria-label="Schließen"
         >
           <X className="w-5 h-5" />
         </button>
 
-        {/* Image Grid */}
-        <div className="grid grid-cols-3 gap-1">
+        {/* Image Grid - 1 column on mobile, 3 on larger screens */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-1">
           {service.images.map((img, idx) => (
             <img
               key={idx}
               src={img}
               alt={`${service.title} Beispiel ${idx + 1}`}
-              className="w-full h-40 sm:h-56 object-cover"
+              className="w-full h-48 sm:h-56 object-cover"
               crossOrigin="anonymous"
             />
           ))}
         </div>
 
         {/* Content */}
-        <div className="p-6 sm:p-8">
+        <div className="p-4 sm:p-6 lg:p-8">
           <div className="flex items-center gap-3 mb-4">
-            <service.icon className="w-8 h-8 text-gold" />
-            <h3 className="text-2xl sm:text-3xl font-bold text-foreground">
+            <service.icon className="w-6 h-6 sm:w-8 sm:h-8 text-gold flex-shrink-0" />
+            <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-foreground">
               {service.title}
             </h3>
           </div>
 
-          <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
+          <p className="text-base sm:text-lg text-muted-foreground mb-6 leading-relaxed">
             {service.fullDesc}
           </p>
 
           {/* Service Types */}
-          <div className="mb-8">
-            <h4 className="text-lg font-semibold text-foreground mb-3">Unsere Leistungen:</h4>
+          <div className="mb-6 sm:mb-8">
+            <h4 className="text-base sm:text-lg font-semibold text-foreground mb-3">Unsere Leistungen:</h4>
             <div className="flex flex-wrap gap-2">
               {service.types.map((type, idx) => (
                 <span
                   key={idx}
-                  className="px-4 py-2 bg-gold/10 text-gold rounded-full text-sm font-medium"
+                  className="px-3 py-1.5 sm:px-4 sm:py-2 bg-gold/10 text-gold rounded-full text-xs sm:text-sm font-medium"
                 >
                   {type}
                 </span>
@@ -171,19 +171,21 @@ function ServiceModal({ service, onClose }: ServiceModalProps) {
           </div>
 
           {/* Process Steps */}
-          <div className="mb-8">
-            <h4 className="text-lg font-semibold text-foreground mb-4">So funktioniert&apos;s:</h4>
-            <div className="grid sm:grid-cols-3 gap-4">
+          <div className="mb-6 sm:mb-8">
+            <h4 className="text-base sm:text-lg font-semibold text-foreground mb-4">So funktioniert&apos;s:</h4>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
               {service.process.map((step) => (
                 <div
                   key={step.step}
-                  className="bg-secondary p-4 rounded-lg"
+                  className="bg-secondary p-3 sm:p-4 rounded-lg flex sm:flex-col items-start sm:items-start gap-3 sm:gap-0"
                 >
-                  <div className="w-10 h-10 bg-gold text-primary-foreground rounded-full flex items-center justify-center font-bold mb-3">
+                  <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gold text-primary-foreground rounded-full flex items-center justify-center font-bold sm:mb-3 flex-shrink-0 text-sm sm:text-base">
                     {step.step}
                   </div>
-                  <h5 className="font-semibold text-foreground mb-1">{step.title}</h5>
-                  <p className="text-sm text-muted-foreground">{step.desc}</p>
+                  <div>
+                    <h5 className="font-semibold text-foreground mb-0.5 sm:mb-1 text-sm sm:text-base">{step.title}</h5>
+                    <p className="text-xs sm:text-sm text-muted-foreground">{step.desc}</p>
+                  </div>
                 </div>
               ))}
             </div>
@@ -194,9 +196,10 @@ function ServiceModal({ service, onClose }: ServiceModalProps) {
             href={`https://wa.me/4917661589109?text=Hallo, ich interessiere mich für ${service.title}. Können Sie mir ein Angebot machen?`}
             target="_blank"
             rel="noopener noreferrer"
+            className="block"
           >
-            <Button className="w-full sm:w-auto bg-gold text-primary-foreground hover:bg-gold-dark">
-              <MessageCircle className="w-5 h-5 mr-2" />
+            <Button className="w-full bg-gold text-primary-foreground hover:bg-gold-dark text-sm sm:text-base py-3">
+              <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
               Angebot anfragen
             </Button>
           </a>

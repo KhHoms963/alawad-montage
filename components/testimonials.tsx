@@ -73,48 +73,48 @@ export function Testimonials() {
         </div>
 
         {/* Testimonials Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {testimonials.map((testimonial, index) => (
             <div
               key={testimonial.id}
-              className={`bg-card border border-border rounded-xl p-6 hover:border-gold/50 transition-all duration-300 ${
+              className={`bg-card border border-border rounded-xl p-4 sm:p-6 hover:border-gold/50 transition-all duration-300 ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
               }`}
               style={{ transitionDelay: `${index * 100}ms` }}
             >
               {/* Quote Icon */}
-              <Quote className="w-8 h-8 text-gold/30 mb-4" />
+              <Quote className="w-6 h-6 sm:w-8 sm:h-8 text-gold/30 mb-3 sm:mb-4" />
 
               {/* Rating */}
-              <div className="flex gap-1 mb-4">
+              <div className="flex gap-0.5 sm:gap-1 mb-3 sm:mb-4">
                 {Array.from({ length: testimonial.rating }).map((_, i) => (
-                  <Star key={i} className="w-5 h-5 text-gold fill-gold" />
+                  <Star key={i} className="w-4 h-4 sm:w-5 sm:h-5 text-gold fill-gold" />
                 ))}
               </div>
 
               {/* Text */}
-              <p className="text-muted-foreground mb-6 leading-relaxed">
+              <p className="text-sm sm:text-base text-muted-foreground mb-4 sm:mb-6 leading-relaxed">
                 &quot;{testimonial.text}&quot;
               </p>
 
               {/* Author */}
-              <div className="border-t border-border pt-4">
-                <p className="font-semibold text-foreground">{testimonial.name}</p>
-                <p className="text-sm text-muted-foreground">{testimonial.city}</p>
+              <div className="border-t border-border pt-3 sm:pt-4">
+                <p className="font-semibold text-foreground text-sm sm:text-base">{testimonial.name}</p>
+                <p className="text-xs sm:text-sm text-muted-foreground">{testimonial.city}</p>
               </div>
             </div>
           ))}
         </div>
 
         {/* Trust Badge */}
-        <div className="mt-12 text-center">
-          <div className="inline-flex items-center gap-2 bg-card border border-border rounded-full px-6 py-3">
+        <div className="mt-8 sm:mt-12 text-center">
+          <div className="inline-flex flex-col sm:flex-row items-center gap-2 bg-card border border-border rounded-2xl sm:rounded-full px-4 sm:px-6 py-3">
             <div className="flex gap-0.5">
               {Array.from({ length: 5 }).map((_, i) => (
                 <Star key={i} className="w-4 h-4 text-gold fill-gold" />
               ))}
             </div>
-            <span className="text-muted-foreground">
+            <span className="text-sm sm:text-base text-muted-foreground text-center">
               <span className="font-semibold text-foreground">4.9</span> von 5 Sternen bei 
               <span className="font-semibold text-foreground"> 200+</span> Bewertungen
             </span>

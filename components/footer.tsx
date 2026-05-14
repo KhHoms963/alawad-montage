@@ -38,54 +38,54 @@ export function Footer() {
     <footer className="bg-card border-t border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Footer Content */}
-        <div className="py-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="py-8 sm:py-12 grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
           {/* Company Info */}
-          <div className="lg:col-span-1">
-            <div className="mb-4">
-              <span className="text-2xl font-bold text-gold">AL AWAD</span>{' '}
-              <span className="text-2xl font-light text-foreground">MONTAGE</span>
+          <div className="col-span-2 sm:col-span-2 lg:col-span-1">
+            <div className="mb-3 sm:mb-4">
+              <span className="text-xl sm:text-2xl font-bold text-gold">AL AWAD</span>{' '}
+              <span className="text-xl sm:text-2xl font-light text-foreground">MONTAGE</span>
             </div>
-            <p className="text-muted-foreground mb-6 leading-relaxed">
+            <p className="text-sm sm:text-base text-muted-foreground mb-4 sm:mb-6 leading-relaxed">
               Ihr zuverlässiger Partner für professionellen Innenausbau und 
               Montageservice in ganz Deutschland.
             </p>
             <div className="flex gap-3">
               <a
                 href="tel:+4917661589109"
-                className="w-10 h-10 bg-secondary rounded-full flex items-center justify-center hover:bg-gold/20 transition-colors"
+                className="w-9 h-9 sm:w-10 sm:h-10 bg-secondary rounded-full flex items-center justify-center hover:bg-gold/20 transition-colors"
                 aria-label="Telefon"
               >
-                <Phone className="w-5 h-5 text-gold" />
+                <Phone className="w-4 h-4 sm:w-5 sm:h-5 text-gold" />
               </a>
               <a
                 href="https://wa.me/4917661589109"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-secondary rounded-full flex items-center justify-center hover:bg-gold/20 transition-colors"
+                className="w-9 h-9 sm:w-10 sm:h-10 bg-secondary rounded-full flex items-center justify-center hover:bg-gold/20 transition-colors"
                 aria-label="WhatsApp"
               >
-                <MessageCircle className="w-5 h-5 text-gold" />
+                <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5 text-gold" />
               </a>
               <a
                 href="mailto:info@al-awad-montage.de"
-                className="w-10 h-10 bg-secondary rounded-full flex items-center justify-center hover:bg-gold/20 transition-colors"
+                className="w-9 h-9 sm:w-10 sm:h-10 bg-secondary rounded-full flex items-center justify-center hover:bg-gold/20 transition-colors"
                 aria-label="E-Mail"
               >
-                <Mail className="w-5 h-5 text-gold" />
+                <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-gold" />
               </a>
             </div>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h3 className="font-semibold text-foreground mb-4">Schnellzugriff</h3>
-            <ul className="space-y-3">
+            <h3 className="font-semibold text-foreground mb-3 sm:mb-4 text-sm sm:text-base">Schnellzugriff</h3>
+            <ul className="space-y-2 sm:space-y-3">
               {quickLinks.map((link) => (
                 <li key={link.href}>
                   <a
                     href={link.href}
                     onClick={(e) => handleNavClick(e, link.href)}
-                    className="text-muted-foreground hover:text-gold transition-colors"
+                    className="text-sm sm:text-base text-muted-foreground hover:text-gold transition-colors"
                   >
                     {link.label}
                   </a>
@@ -96,14 +96,14 @@ export function Footer() {
 
           {/* Services */}
           <div>
-            <h3 className="font-semibold text-foreground mb-4">Leistungen</h3>
-            <ul className="space-y-3">
+            <h3 className="font-semibold text-foreground mb-3 sm:mb-4 text-sm sm:text-base">Leistungen</h3>
+            <ul className="space-y-2 sm:space-y-3">
               {services.map((service) => (
                 <li key={service}>
                   <a
                     href="#leistungen"
                     onClick={(e) => handleNavClick(e, '#leistungen')}
-                    className="text-muted-foreground hover:text-gold transition-colors"
+                    className="text-sm sm:text-base text-muted-foreground hover:text-gold transition-colors"
                   >
                     {service}
                   </a>
@@ -113,29 +113,29 @@ export function Footer() {
           </div>
 
           {/* Contact Info */}
-          <div>
-            <h3 className="font-semibold text-foreground mb-4">Kontakt</h3>
-            <ul className="space-y-3 text-muted-foreground">
+          <div className="col-span-2 sm:col-span-1">
+            <h3 className="font-semibold text-foreground mb-3 sm:mb-4 text-sm sm:text-base">Kontakt</h3>
+            <ul className="space-y-2 sm:space-y-3 text-muted-foreground">
               <li className="flex items-center gap-2">
-                <Phone className="w-4 h-4 text-gold" />
-                <a href="tel:+4917661589109" className="hover:text-gold transition-colors">
+                <Phone className="w-4 h-4 text-gold flex-shrink-0" />
+                <a href="tel:+4917661589109" className="text-sm sm:text-base hover:text-gold transition-colors">
                   +49 176 61589109
                 </a>
               </li>
               <li className="flex items-center gap-2">
-                <MessageCircle className="w-4 h-4 text-gold" />
+                <MessageCircle className="w-4 h-4 text-gold flex-shrink-0" />
                 <a
                   href="https://wa.me/4917661589109"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-gold transition-colors"
+                  className="text-sm sm:text-base hover:text-gold transition-colors"
                 >
                   WhatsApp
                 </a>
               </li>
               <li className="flex items-center gap-2">
-                <Mail className="w-4 h-4 text-gold" />
-                <a href="mailto:info@al-awad-montage.de" className="hover:text-gold transition-colors">
+                <Mail className="w-4 h-4 text-gold flex-shrink-0" />
+                <a href="mailto:info@al-awad-montage.de" className="text-sm sm:text-base hover:text-gold transition-colors break-all">
                   info@al-awad-montage.de
                 </a>
               </li>
@@ -144,20 +144,20 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="py-6 border-t border-border flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-sm text-muted-foreground">
+        <div className="py-4 sm:py-6 border-t border-border flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-4">
+          <p className="text-xs sm:text-sm text-muted-foreground text-center sm:text-left">
             © {currentYear} AL AWAD MONTAGE. Alle Rechte vorbehalten.
           </p>
-          <div className="flex gap-6">
+          <div className="flex gap-4 sm:gap-6">
             <Link
               href="/impressum"
-              className="text-sm text-muted-foreground hover:text-gold transition-colors"
+              className="text-xs sm:text-sm text-muted-foreground hover:text-gold transition-colors"
             >
               Impressum
             </Link>
             <Link
               href="/datenschutz"
-              className="text-sm text-muted-foreground hover:text-gold transition-colors"
+              className="text-xs sm:text-sm text-muted-foreground hover:text-gold transition-colors"
             >
               Datenschutz
             </Link>

@@ -73,24 +73,24 @@ export function Contact() {
         </div>
 
         {/* Contact Cards */}
-        <div className="grid sm:grid-cols-3 gap-6 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mb-8 sm:mb-12">
           {contactCards.map((card, index) => (
             <a
               key={index}
               href={card.link}
               target={card.isExternal ? '_blank' : undefined}
               rel={card.isExternal ? 'noopener noreferrer' : undefined}
-              className={`bg-card border border-border rounded-xl p-6 text-center hover:border-gold/50 hover:bg-card/80 transition-all duration-300 group ${
+              className={`bg-card border border-border rounded-xl p-4 sm:p-6 text-center hover:border-gold/50 hover:bg-card/80 transition-all duration-300 group ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
               }`}
               style={{ transitionDelay: `${index * 100}ms` }}
             >
-              <div className="w-16 h-16 mx-auto mb-4 bg-gold/10 rounded-full flex items-center justify-center group-hover:bg-gold/20 transition-colors">
-                <card.icon className="w-8 h-8 text-gold" />
+              <div className="w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-3 sm:mb-4 bg-gold/10 rounded-full flex items-center justify-center group-hover:bg-gold/20 transition-colors">
+                <card.icon className="w-6 h-6 sm:w-8 sm:h-8 text-gold" />
               </div>
-              <h3 className="text-lg font-semibold text-foreground mb-1">{card.title}</h3>
-              <p className="text-gold font-medium mb-2">{card.value}</p>
-              <p className="text-sm text-muted-foreground">{card.description}</p>
+              <h3 className="text-base sm:text-lg font-semibold text-foreground mb-1">{card.title}</h3>
+              <p className="text-gold font-medium mb-1 sm:mb-2 text-sm sm:text-base">{card.value}</p>
+              <p className="text-xs sm:text-sm text-muted-foreground">{card.description}</p>
             </a>
           ))}
         </div>
@@ -160,10 +160,10 @@ export function Contact() {
             </div>
 
             {/* Quick Actions */}
-            <div className="mt-6 flex gap-3">
+            <div className="mt-4 sm:mt-6 flex flex-col sm:flex-row gap-2 sm:gap-3">
               <a
                 href="tel:+4917661589109"
-                className="flex-1 flex items-center justify-center gap-2 py-3 bg-gold text-primary-foreground rounded-lg font-medium hover:bg-gold-dark transition-colors"
+                className="flex-1 flex items-center justify-center gap-2 py-3 bg-gold text-primary-foreground rounded-lg font-medium hover:bg-gold-dark transition-colors text-sm sm:text-base"
               >
                 <Phone className="w-4 h-4" />
                 Anrufen
@@ -172,7 +172,7 @@ export function Contact() {
                 href="https://wa.me/4917661589109"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 flex items-center justify-center gap-2 py-3 bg-[#25D366] text-white rounded-lg font-medium hover:bg-[#128C7E] transition-colors"
+                className="flex-1 flex items-center justify-center gap-2 py-3 bg-[#25D366] text-white rounded-lg font-medium hover:bg-[#128C7E] transition-colors text-sm sm:text-base"
               >
                 <MessageCircle className="w-4 h-4" />
                 WhatsApp

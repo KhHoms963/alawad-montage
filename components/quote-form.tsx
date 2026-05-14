@@ -134,11 +134,11 @@ export function QuoteForm() {
           >
             <form
               onSubmit={handleSubmit}
-              className="bg-card border border-border rounded-xl p-6 sm:p-8"
+              className="bg-card border border-border rounded-xl p-4 sm:p-6 lg:p-8"
             >
-              <div className="grid sm:grid-cols-2 gap-4 mb-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-3 sm:mb-4">
                 <div>
-                  <label htmlFor="firstName" className="block text-sm font-medium text-foreground mb-2">
+                  <label htmlFor="firstName" className="block text-xs sm:text-sm font-medium text-foreground mb-1.5 sm:mb-2">
                     Vorname *
                   </label>
                   <input
@@ -148,12 +148,12 @@ export function QuoteForm() {
                     required
                     value={formData.firstName}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-input border border-border rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent"
+                    className="w-full px-3 sm:px-4 py-2.5 sm:py-3 bg-input border border-border rounded-lg text-sm sm:text-base text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent"
                     placeholder="Max"
                   />
                 </div>
                 <div>
-                  <label htmlFor="lastName" className="block text-sm font-medium text-foreground mb-2">
+                  <label htmlFor="lastName" className="block text-xs sm:text-sm font-medium text-foreground mb-1.5 sm:mb-2">
                     Nachname *
                   </label>
                   <input
@@ -163,15 +163,15 @@ export function QuoteForm() {
                     required
                     value={formData.lastName}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-input border border-border rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent"
+                    className="w-full px-3 sm:px-4 py-2.5 sm:py-3 bg-input border border-border rounded-lg text-sm sm:text-base text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent"
                     placeholder="Mustermann"
                   />
                 </div>
               </div>
 
-              <div className="grid sm:grid-cols-2 gap-4 mb-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-3 sm:mb-4">
                 <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-foreground mb-2">
+                  <label htmlFor="phone" className="block text-xs sm:text-sm font-medium text-foreground mb-1.5 sm:mb-2">
                     Telefon *
                   </label>
                   <input
@@ -181,12 +181,12 @@ export function QuoteForm() {
                     required
                     value={formData.phone}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-input border border-border rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent"
+                    className="w-full px-3 sm:px-4 py-2.5 sm:py-3 bg-input border border-border rounded-lg text-sm sm:text-base text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent"
                     placeholder="+49 123 456789"
                   />
                 </div>
                 <div>
-                  <label htmlFor="plz" className="block text-sm font-medium text-foreground mb-2">
+                  <label htmlFor="plz" className="block text-xs sm:text-sm font-medium text-foreground mb-1.5 sm:mb-2">
                     Postleitzahl *
                   </label>
                   <input
@@ -196,15 +196,15 @@ export function QuoteForm() {
                     required
                     value={formData.plz}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-input border border-border rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent"
+                    className="w-full px-3 sm:px-4 py-2.5 sm:py-3 bg-input border border-border rounded-lg text-sm sm:text-base text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent"
                     placeholder="12345"
                     maxLength={5}
                   />
                 </div>
               </div>
 
-              <div className="mb-4">
-                <label htmlFor="service" className="block text-sm font-medium text-foreground mb-2">
+              <div className="mb-3 sm:mb-4">
+                <label htmlFor="service" className="block text-xs sm:text-sm font-medium text-foreground mb-1.5 sm:mb-2">
                   Gewünschte Leistung *
                 </label>
                 <select
@@ -213,7 +213,7 @@ export function QuoteForm() {
                   required
                   value={formData.service}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 bg-input border border-border rounded-lg text-foreground focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent"
+                  className="w-full px-3 sm:px-4 py-2.5 sm:py-3 bg-input border border-border rounded-lg text-sm sm:text-base text-foreground focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent"
                 >
                   <option value="">Bitte wählen...</option>
                   {services.map((service) => (
@@ -224,30 +224,30 @@ export function QuoteForm() {
                 </select>
               </div>
 
-              <div className="mb-6">
-                <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
+              <div className="mb-4 sm:mb-6">
+                <label htmlFor="message" className="block text-xs sm:text-sm font-medium text-foreground mb-1.5 sm:mb-2">
                   Ihre Nachricht
                 </label>
                 <textarea
                   id="message"
                   name="message"
-                  rows={4}
+                  rows={3}
                   value={formData.message}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 bg-input border border-border rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent resize-none"
+                  className="w-full px-3 sm:px-4 py-2.5 sm:py-3 bg-input border border-border rounded-lg text-sm sm:text-base text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent resize-none"
                   placeholder="Beschreiben Sie Ihr Projekt..."
                 />
               </div>
 
               <Button
                 type="submit"
-                className="w-full bg-gold text-primary-foreground hover:bg-gold-dark py-6 text-lg"
+                className="w-full bg-gold text-primary-foreground hover:bg-gold-dark py-4 sm:py-6 text-base sm:text-lg"
               >
-                <Send className="w-5 h-5 mr-2" />
+                <Send className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
                 Anfrage senden
               </Button>
 
-              <p className="text-sm text-muted-foreground mt-4 text-center">
+              <p className="text-xs sm:text-sm text-muted-foreground mt-3 sm:mt-4 text-center">
                 Ihre Anfrage wird per WhatsApp gesendet
               </p>
             </form>
