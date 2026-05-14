@@ -109,7 +109,7 @@ export function Contact() {
             </div>
             <div className="aspect-video bg-muted flex items-center justify-center">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2428.4054675291927!2d13.376492076903987!3d52.51914997981166!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a851c655f20989%3A0x26bbfb4e84674c63!2sBerlin%2C%20Germany!5e0!3m2!1sen!2sus!4v1703123456789!5m2!1sen!2sus"
+                src="https://www.google.com/maps?q=August-Metz-Weg+9,+64297+Darmstadt,+Germany&output=embed"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}

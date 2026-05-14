@@ -253,7 +253,7 @@ export function Services() {
           {services.map((service, index) => (
             <div
               key={service.id}
-              className={`group bg-card border border-border rounded-xl p-6 hover:border-gold/50 transition-all duration-300 cursor-pointer ${
+              className={`group bg-card border border-border rounded-xl p-6 hover:border-gold/50 transition-all duration-300 cursor-pointer active:scale-95 hover:scale-[1.02] ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
               }`}
               style={{ transitionDelay: `${index * 100}ms` }}

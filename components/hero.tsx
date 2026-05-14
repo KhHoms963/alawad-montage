@@ -2,12 +2,12 @@
 
 import { useEffect, useState } from 'react'
 import { Button } from '@/components/ui/button'
-import { MessageCircle, ChevronDown } from 'lucide-react'
+import { MessageCircle } from 'lucide-react'
 
 const stats = [
-  { value: '10+', label: 'Jahre Erfahrung' },
-  { value: '500+', label: 'Projekte' },
-  { value: '98%', label: 'Zufriedenheit' },
+  { value: '39+', label: 'Jahre Erfahrung' },
+  { value: '476+', label: 'Projekte' },
+  { value: '100%', label: 'Zufriedenheit' },
 ]
 
 export function Hero() {
@@ -61,8 +61,7 @@ export function Hero() {
           </p>
 
           <p className="text-base sm:text-lg text-muted-foreground mb-8 sm:mb-12 max-w-2xl mx-auto px-2">
-            Ihr zuverlässiger Partner für professionellen Innenausbau, Küchenmontage, 
-            Möbelmontage und vieles mehr in ganz Deutschland.
+            Montage-Experten für alles. Küchen, Möbel, Trockenbau, Holzhäuser, Türen &amp; Fenster – wir bauen Ihre Träume in ganz Deutschland
           </p>
 
           {/* CTA Buttons */}
@@ -93,7 +92,7 @@ export function Hero() {
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
         >
-          <div className="bg-card/80 backdrop-blur-md border border-border rounded-xl p-4 sm:p-6 lg:p-8 max-w-3xl mx-auto">
+          <div className="bg-card/80 backdrop-blur-md border border-border rounded-xl p-4 sm:p-6 lg:p-8 max-w-3xl mx-auto shadow-[0_0_40px_rgba(201,168,76,0.3),0_0_80px_rgba(201,168,76,0.15)] hover:shadow-[0_0_60px_rgba(201,168,76,0.4),0_0_100px_rgba(201,168,76,0.2)] hover:scale-105 transition-all duration-300 cursor-pointer">
             <div className="grid grid-cols-3 gap-2 sm:gap-8">
               {stats.map((stat, index) => (
                 <div key={index} className="text-center">
@@ -109,14 +108,7 @@ export function Hero() {
           </div>
         </div>
 
-        {/* Scroll Indicator */}
-        <button
-          onClick={() => scrollToSection('#ueber-uns')}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce cursor-pointer"
-          aria-label="Nach unten scrollen"
-        >
-          <ChevronDown className="w-8 h-8 text-gold" />
-        </button>
+        
       </div>
     </section>
   )
