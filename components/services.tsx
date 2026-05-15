@@ -1,42 +1,30 @@
 "use client"
 
 import { useEffect, useRef, useState } from 'react'
-import { ChefHat, Sofa, Layers, Home, DoorOpen, ArrowRight, X, MessageCircle, ChevronDown } from 'lucide-react'
+import { ChefHat, Sofa, Layers, Home, DoorOpen, ArrowRight, X, MessageCircle } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
-// Kitchen types data with images and descriptions
 const kitchenTypes = [
   {
-    id: 'g-form',
-    name: 'G-Form Küchen',
-    description: 'Die Premium-Lösung für große Räume. Vier Arbeitsflächen bieten maximale Funktionalität und Stauraum. Ideal für offene Wohnküchen mit Kochinsel oder Theke. Luxuriös, praktisch und beeindruckend.',
+    id: 'einzeilig',
+    name: 'Einzeilige Küchen',
+    description: 'Die klassische Lösung für kleine Räume. Alle Arbeitsflächen, Geräte und Schränke sind in einer Linie angeordnet. Platzsparend, funktional und ideal für offene Wohnbereiche. Perfekt für Singles, Paare oder kleine Haushalte.',
     images: [
-      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/2-I5MfbbFTn6bQjDPkpcnSV1BznkWnkA.png',
-      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/3-efR2codgIJW7YSt91Q5euPv4P1Hoka.png',
-      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/4-xXeRA5OEa1RtxMqAqA8NMIuGHMkXvf.png',
-      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/5-gnISYpg02AmVKWv194fpjjWdMj4QNc.png',
+      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/18-V8GbFg2Wi3QNLnhf3WduZrKPXITH1B.png',
+      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/19-3gzTf4hZwkKVwQJa9ZwNZI1jHcgOgP.png',
+      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/20-Vp1OvW8HUzML9euJs4zvYLaziw7HG1.png',
+      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/21-E6SUGcxg5aEQy3GcVLUp3wca7pZpEN.png',
     ],
   },
   {
-    id: 'u-form',
-    name: 'U-Form Küchen',
-    description: 'Maximale Effizienz auf drei Seiten. Das ideale Arbeitsdreieck mit kurzen Wegen zwischen Herd, Spüle und Kühlschrank. Viel Stauraum und Arbeitsfläche. Perfekt für große Küchen und anspruchsvolle Köche.',
+    id: 'zweizeilig',
+    name: 'Zweizeilige Küchen',
+    description: 'Zwei parallele Arbeitsflächen bieten optimale Effizienz. Das Arbeitsdreieck (Herd, Spüle, Kühlschrank) ist ideal verteilt. Mehr Stauraum und Arbeitsfläche als einzeilige Küchen. Die perfekte Balance zwischen Funktionalität und Raumnutzung.',
     images: [
-      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/6-z4blj2MzDjguHrZ2w2ComQWcTmbdnr.png',
-      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/7-vYg9Ci6V7baCbxwPWmerdaCoqoBmzL.png',
-      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/8-ek34y7XFcjSvtPMYLeijgaianLOm4t.png',
-      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/9-lU45U9lyvmfEHl1DoFMH7tK95ySb08.png',
-    ],
-  },
-  {
-    id: 'insel',
-    name: 'Inselküche',
-    description: 'Das Highlight jeder modernen Küche. Eine zentrale Insel mit Kochfeld, Spüle oder Theke schafft einen sozialen Mittelpunkt. Perfekt für große Räume und offene Wohnkonzepte. Kombiniert Funktionalität mit Design und Lifestyle.',
-    images: [
-      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/10-NUytKj5mebFXPNnaOC1fcgD5fCQHrw.png',
-      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/11-58xUx9ihUQ0Iknj6f0fxKOGxekjx2W.png',
-      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/12-gerO5GWf8ez81bcawHXmhnZLQyG50h.png',
-      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/13-7h8j6Sf9QCEpPmISrv0tTF4yf7xEFx.png',
+      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/22-tjU0EPXSBIENrMaEIt3TMfo6NKvK5e.png',
+      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/23-VMedSxa48j0IRdSugXGc4setARhEZo.png',
+      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/24-QfrKYon12RaolD2W0bKXecGHhvH8jO.png',
+      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/25-KAHf6ceu6l7YF8Fy5BaOmta6xUUcFT.png',
     ],
   },
   {
@@ -51,25 +39,36 @@ const kitchenTypes = [
     ],
   },
   {
-    id: 'einzeilig',
-    name: 'Einzeilige Küchen',
-    description: 'Die platzsparende Lösung für kleine Räume und offene Wohnkonzepte. Alle Elemente in einer Zeile angeordnet – Herd, Spüle und Kühlschrank auf einer Linie. Ideal für Studios, Einzimmerwohnungen und als Zweitküche. Modern, kompakt und funktional.',
+    id: 'u-form',
+    name: 'U-Form Küchen',
+    description: 'Maximale Effizienz auf drei Seiten. Das ideale Arbeitsdreieck mit kurzen Wegen zwischen Herd, Spüle und Kühlschrank. Viel Stauraum und Arbeitsfläche. Perfekt für große Küchen und anspruchsvolle Köche.',
     images: [
-      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/18-V8GbFg2Wi3QNLnhf3WduZrKPXITH1B.png',
-      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/19-3gzTf4hZwkKVwQJa9ZwNZI1jHcgOgP.png',
-      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/20-Vp1OvW8HUzML9euJs4zvYLaziw7HG1.png',
-      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/21-E6SUGcxg5aEQy3GcVLUp3wca7pZpEN.png',
+      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/6-z4blj2MzDjguHrZ2w2ComQWcTmbdnr.png',
+      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/7-vYg9Ci6V7baCbxwPWmerdaCoqoBmzL.png',
+      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/8-ek34y7XFcjSvtPMYLeijgaianLOm4t.png',
+      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/9-lU45U9lyvmfEHl1DoFMH7tK95ySb08.png',
     ],
   },
   {
-    id: 'zweizeilig',
-    name: 'Zweizeilige Küchen',
-    description: 'Doppelte Arbeitsfläche und maximale Effizienz. Zwei parallele Küchenzeilen bieten optimale Arbeitswege und viel Stauraum. Perfekt für schmale Räume und professionelles Kochen. Die Wahl für alle, die Platz und Funktionalität vereinen möchten.',
+    id: 'g-form',
+    name: 'G-Form Küchen',
+    description: 'Die Premium-Lösung für große Räume. Vier Arbeitsflächen bieten maximale Funktionalität und Stauraum. Ideal für offene Wohnküchen mit Kochinsel oder Theke. Luxuriös, praktisch und beeindruckend.',
     images: [
-      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/22-tjU0EPXSBIENrMaEIt3TMfo6NKvK5e.png',
-      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/23-VMedSxa48j0IRdSugXGc4setARhEZo.png',
-      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/24-QfrKYon12RaolD2W0bKXecGHhvH8jO.png',
-      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/25-KAHf6ceu6l7YF8Fy5BaOmta6xUUcFT.png',
+      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/2-I5MfbbFTn6bQjDPkpcnSV1BznkWnkA.png',
+      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/3-efR2codgIJW7YSt91Q5euPv4P1Hoka.png',
+      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/4-xXeRA5OEa1RtxMqAqA8NMIuGHMkXvf.png',
+      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/5-gnISYpg02AmVKWv194fpjjWdMj4QNc.png',
+    ],
+  },
+  {
+    id: 'insel',
+    name: 'Inselküche',
+    description: 'Das Highlight jeder modernen Küche. Eine zentrale Insel mit Kochfeld, Spüle oder Theke schafft einen sozialen Mittelpunkt. Perfekt für große Räume und offene Wohnkonzepte. Kombiniert Funktionalität mit Design und Lifestyle.',
+    images: [
+      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/10-NUytKj5mebFXPNnaOC1fcgD5fCQHrw.png',
+      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/11-58xUx9ihUQ0Iknj6f0fxKOGxekjx2W.png',
+      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/12-gerO5GWf8ez81bcawHXmhnZLQyG50h.png',
+      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/13-7h8j6Sf9QCEpPmISrv0tTF4yf7xEFx.png',
     ],
   },
 ]
@@ -88,9 +87,9 @@ const services = [
       { step: 3, title: 'Abnahme', desc: 'Finale Prüfung und Einweisung' },
     ],
     images: [
-      'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=80',
-      'https://images.unsplash.com/photo-1556909172-54557c7e4fb7?w=600&q=80',
-      'https://images.unsplash.com/photo-1600489000022-c2086d79f9d4?w=600&q=80',
+      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-l3ycdEZCi9ZTHC8KtLGYJfdQdmZqgR.png',
+      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-6PatTKanSBvNoBBJtgNvo7u2P4Tii2.png',
+      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-9bShOSr2slHZt9TCjkuT4F6xL3jWhS.png',
     ],
   },
   {
@@ -106,9 +105,9 @@ const services = [
       { step: 3, title: 'Kontrolle', desc: 'Qualitätsprüfung und Aufräumen' },
     ],
     images: [
-      'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&q=80',
-      'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&q=80',
-      'https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=600&q=80',
+      '/images/Screenshot 2026-05-15 155448.png',
+      '/images/Screenshot 2026-05-15 155457.png',
+      '/images/Screenshot 2026-05-15 155504.png',
     ],
   },
   {
@@ -185,11 +184,11 @@ function ServiceModal({ service, onClose }: ServiceModalProps) {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       {/* Backdrop */}
-      <div 
+      <div
         className="absolute inset-0 bg-background/80 backdrop-blur-sm"
         onClick={onClose}
       />
-      
+
       {/* Modal */}
       <div className="relative bg-card border border-border rounded-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto mx-2 sm:mx-4">
         {/* Close Button */}
@@ -201,20 +200,7 @@ function ServiceModal({ service, onClose }: ServiceModalProps) {
           <X className="w-5 h-5" />
         </button>
 
-        {/* Image Grid - 1 column on mobile, 3 on larger screens */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-1">
-          {service.images.map((img, idx) => (
-            <img
-              key={idx}
-              src={img}
-              alt={`${service.title} Beispiel ${idx + 1}`}
-              className="w-full h-48 sm:h-56 object-cover"
-              crossOrigin="anonymous"
-            />
-          ))}
-        </div>
-
-        {/* Content */}
+        {/* Content FIRST (above images) */}
         <div className="p-4 sm:p-6 lg:p-8">
           <div className="flex items-center gap-3 mb-4">
             <service.icon className="w-6 h-6 sm:w-8 sm:h-8 text-gold flex-shrink-0" />
@@ -249,7 +235,7 @@ function ServiceModal({ service, onClose }: ServiceModalProps) {
               {service.process.map((step) => (
                 <div
                   key={step.step}
-                  className="bg-secondary p-3 sm:p-4 rounded-lg flex sm:flex-col items-start sm:items-start gap-3 sm:gap-0"
+                  className="bg-secondary p-3 sm:p-4 rounded-lg flex sm:flex-col items-start gap-3 sm:gap-0"
                 >
                   <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gold text-primary-foreground rounded-full flex items-center justify-center font-bold sm:mb-3 flex-shrink-0 text-sm sm:text-base">
                     {step.step}
@@ -276,6 +262,20 @@ function ServiceModal({ service, onClose }: ServiceModalProps) {
             </Button>
           </a>
         </div>
+
+        {/* Image Grid BELOW content */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-1">
+          {service.images.map((img, idx) => (
+            <img
+              key={idx}
+              src={img}
+              alt={`${service.title} Beispiel ${idx + 1}`}
+              className="w-full h-48 sm:h-56 object-cover"
+              crossOrigin="anonymous"
+            />
+          ))}
+        </div>
+
       </div>
     </div>
   )
@@ -316,7 +316,7 @@ export function Services() {
             Was wir für Sie <span className="text-gold">tun können</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Von der Küchenmontage bis zum Holzhaus – entdecken Sie unser umfangreiches 
+            Von der Küchenmontage bis zum Holzhaus – entdecken Sie unser umfangreiches
             Leistungsspektrum für Ihren professionellen Innenausbau.
           </p>
         </div>
@@ -348,7 +348,7 @@ export function Services() {
           <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-6 text-center">
             Unsere <span className="text-gold">Küchenformen</span>
           </h3>
-          
+
           {/* Kitchen Type Buttons */}
           <div className="flex flex-wrap justify-center gap-3 mb-6">
             {kitchenTypes.map((kitchen) => (
@@ -375,12 +375,9 @@ export function Services() {
               }`}
             >
               <div className="bg-card border border-border rounded-xl p-4 sm:p-6 lg:p-8">
-                {/* Description */}
                 <p className="text-muted-foreground text-center mb-6 max-w-3xl mx-auto leading-relaxed">
                   {kitchen.description}
                 </p>
-
-                {/* Images Grid */}
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
                   {kitchen.images.map((img, idx) => (
                     <div key={idx} className="relative overflow-hidden rounded-lg group/img">

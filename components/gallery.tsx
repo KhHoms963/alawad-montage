@@ -6,13 +6,13 @@ import { X, ChevronLeft, ChevronRight } from 'lucide-react'
 const categories = ['Alle', 'Küchen', 'Möbel', 'Trockenbau', 'Türen']
 
 const galleryItems = [
-  { id: 1, src: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80', category: 'Küchen', title: 'Moderne Einbauküche' },
-  { id: 2, src: 'https://images.unsplash.com/photo-1556909172-54557c7e4fb7?w=800&q=80', category: 'Küchen', title: 'L-Form Küche' },
+  { id: 1, src: '/images/Screenshot 2026-05-15 155448.png', category: 'Küchen', title: 'Moderne Einbauküche' },
+  { id: 2, src: '/images/Screenshot 2026-05-15 155457.png', category: 'Küchen', title: 'L-Form Küche' },
   { id: 3, src: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800&q=80', category: 'Möbel', title: 'Wohnzimmer Sofa' },
   { id: 4, src: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&q=80', category: 'Möbel', title: 'Wohnwand Montage' },
   { id: 5, src: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80', category: 'Trockenbau', title: 'Trennwand Installation' },
   { id: 6, src: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80', category: 'Türen', title: 'Innentür Einbau' },
-  { id: 7, src: 'https://images.unsplash.com/photo-1600489000022-c2086d79f9d4?w=800&q=80', category: 'Küchen', title: 'Designer Küche' },
+  { id: 7, src: '/images/Screenshot 2026-05-15 155504.png', category: 'Küchen', title: 'Designer Küche' },
   { id: 8, src: 'https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=800&q=80', category: 'Möbel', title: 'Büromöbel Aufbau' },
   { id: 9, src: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800&q=80', category: 'Trockenbau', title: 'Deckenverkleidung' },
   { id: 10, src: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80', category: 'Türen', title: 'Glastür Montage' },
