@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { Menu, X, Phone } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { HeroLogo } from '@/components/splash-screen'
 
 const navLinks = [
   { href: '#startseite', label: 'Startseite' },
@@ -47,8 +48,11 @@ export function Navigation() {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <a href="#startseite" className="flex items-center gap-2">
-            <span className="text-2xl font-bold text-gold">AL AWAD</span>
-            <span className="text-2xl font-light text-foreground">MONTAGE</span>
+            <HeroLogo className="w-10 h-10 sm:w-12 sm:h-12" />
+            <div className="flex flex-col sm:flex-row sm:items-center sm:gap-2">
+              <span className="text-xl sm:text-2xl font-bold text-gold leading-tight">AL AWAD</span>
+              <span className="text-xl sm:text-2xl font-light text-foreground leading-tight">MONTAGE</span>
+            </div>
           </a>
 
           {/* Desktop Navigation */}

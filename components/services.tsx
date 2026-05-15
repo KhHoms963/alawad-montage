@@ -1,17 +1,87 @@
 "use client"
 
 import { useEffect, useRef, useState } from 'react'
-import { UtensilsCrossed, Sofa, Layers, Home, DoorOpen, ArrowRight, X, MessageCircle, CheckCircle } from 'lucide-react'
+import { ChefHat, Sofa, Layers, Home, DoorOpen, ArrowRight, X, MessageCircle, ChevronDown } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+
+// Kitchen types data with images and descriptions
+const kitchenTypes = [
+  {
+    id: 'g-form',
+    name: 'G-Form Küchen',
+    description: 'Die Premium-Lösung für große Räume. Vier Arbeitsflächen bieten maximale Funktionalität und Stauraum. Ideal für offene Wohnküchen mit Kochinsel oder Theke. Luxuriös, praktisch und beeindruckend.',
+    images: [
+      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/2-I5MfbbFTn6bQjDPkpcnSV1BznkWnkA.png',
+      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/3-efR2codgIJW7YSt91Q5euPv4P1Hoka.png',
+      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/4-xXeRA5OEa1RtxMqAqA8NMIuGHMkXvf.png',
+      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/5-gnISYpg02AmVKWv194fpjjWdMj4QNc.png',
+    ],
+  },
+  {
+    id: 'u-form',
+    name: 'U-Form Küchen',
+    description: 'Maximale Effizienz auf drei Seiten. Das ideale Arbeitsdreieck mit kurzen Wegen zwischen Herd, Spüle und Kühlschrank. Viel Stauraum und Arbeitsfläche. Perfekt für große Küchen und anspruchsvolle Köche.',
+    images: [
+      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/6-z4blj2MzDjguHrZ2w2ComQWcTmbdnr.png',
+      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/7-vYg9Ci6V7baCbxwPWmerdaCoqoBmzL.png',
+      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/8-ek34y7XFcjSvtPMYLeijgaianLOm4t.png',
+      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/9-lU45U9lyvmfEHl1DoFMH7tK95ySb08.png',
+    ],
+  },
+  {
+    id: 'insel',
+    name: 'Inselküche',
+    description: 'Das Highlight jeder modernen Küche. Eine zentrale Insel mit Kochfeld, Spüle oder Theke schafft einen sozialen Mittelpunkt. Perfekt für große Räume und offene Wohnkonzepte. Kombiniert Funktionalität mit Design und Lifestyle.',
+    images: [
+      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/10-NUytKj5mebFXPNnaOC1fcgD5fCQHrw.png',
+      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/11-58xUx9ihUQ0Iknj6f0fxKOGxekjx2W.png',
+      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/12-gerO5GWf8ez81bcawHXmhnZLQyG50h.png',
+      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/13-7h8j6Sf9QCEpPmISrv0tTF4yf7xEFx.png',
+    ],
+  },
+  {
+    id: 'l-form',
+    name: 'L-Form Küchen',
+    description: 'Flexibel und praktisch. Die L-förmige Anordnung nutzt zwei Wände optimal und schafft einen natürlichen Arbeitsfluss. Viel Stauraum, großzügige Arbeitsflächen und eine offene Seite für den Wohnbereich. Die beliebteste Lösung für moderne Haushalte.',
+    images: [
+      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/14-pbKWZR9Gml1ELwL62wKrqCFOf3lHt9.png',
+      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/15-BXL0udB41h7X0sg4ugqkJIERj3WKHt.png',
+      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/16-e7GcmqJU2hY6EbNCLSOPNaz1nNtoNt.png',
+      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/17-mRxh0OHEHGfSAW2BJlWvJriT0NBGfI.png',
+    ],
+  },
+  {
+    id: 'einzeilig',
+    name: 'Einzeilige Küchen',
+    description: 'Die platzsparende Lösung für kleine Räume und offene Wohnkonzepte. Alle Elemente in einer Zeile angeordnet – Herd, Spüle und Kühlschrank auf einer Linie. Ideal für Studios, Einzimmerwohnungen und als Zweitküche. Modern, kompakt und funktional.',
+    images: [
+      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/18-V8GbFg2Wi3QNLnhf3WduZrKPXITH1B.png',
+      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/19-3gzTf4hZwkKVwQJa9ZwNZI1jHcgOgP.png',
+      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/20-Vp1OvW8HUzML9euJs4zvYLaziw7HG1.png',
+      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/21-E6SUGcxg5aEQy3GcVLUp3wca7pZpEN.png',
+    ],
+  },
+  {
+    id: 'zweizeilig',
+    name: 'Zweizeilige Küchen',
+    description: 'Doppelte Arbeitsfläche und maximale Effizienz. Zwei parallele Küchenzeilen bieten optimale Arbeitswege und viel Stauraum. Perfekt für schmale Räume und professionelles Kochen. Die Wahl für alle, die Platz und Funktionalität vereinen möchten.',
+    images: [
+      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/22-tjU0EPXSBIENrMaEIt3TMfo6NKvK5e.png',
+      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/23-VMedSxa48j0IRdSugXGc4setARhEZo.png',
+      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/24-QfrKYon12RaolD2W0bKXecGHhvH8jO.png',
+      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/25-KAHf6ceu6l7YF8Fy5BaOmta6xUUcFT.png',
+    ],
+  },
+]
 
 const services = [
   {
     id: 'kuechen',
-    icon: UtensilsCrossed,
+    icon: ChefHat,
     title: 'Küchenmontage',
     shortDesc: 'Professionelle Montage Ihrer Traumküche – schnell, sauber und zuverlässig.',
     fullDesc: 'Wir montieren Ihre Küche fachgerecht und termingerecht. Von der Lieferung bis zur fertigen Einbauküche – alles aus einer Hand. Unsere erfahrenen Monteure sorgen für eine präzise Installation aller Komponenten, inklusive Elektro- und Wasseranschlüsse.',
-    types: ['L-Form Küchen', 'U-Form Küchen', 'Inselküchen', 'Zeilenküchen'],
+    types: ['Einbauküchen', 'Küchenzeilen', 'Kochinseln', 'Arbeitsplatten'],
     process: [
       { step: 1, title: 'Beratung', desc: 'Kostenlose Vor-Ort-Beratung und Aufmaß' },
       { step: 2, title: 'Montage', desc: 'Professionelle Installation durch Fachkräfte' },
@@ -82,7 +152,7 @@ const services = [
     icon: DoorOpen,
     title: 'Türen & Fenster',
     shortDesc: 'Fachgerechte Montage von Türen und Fenstern aller Art.',
-    fullDesc: 'Ob Innentüren, Außentüren, Schiebetüren oder Fenster – wir montieren alle Arten von Türen und Fenstern fachgerecht und passgenau. Für mehr Sicherheit und Energieeffizienz in Ihrem Zuhause.',
+    fullDesc: 'Holztüren und Holzfenster – wir montieren alle Arten von Türen und Fenstern mit handwerklicher Präzision. Innentüren, Außentüren, Schiebetüren aus Holz – passgenau und fachgerecht. Mit 39 Jahren Erfahrung für mehr Sicherheit, Energieeffizienz und natürliche Schönheit in Ihrem Zuhause.',
     types: ['Innentüren', 'Außentüren', 'Schiebetüren', 'Fenster'],
     process: [
       { step: 1, title: 'Aufmaß', desc: 'Präzises Vermessen vor Ort' },
@@ -90,9 +160,11 @@ const services = [
       { step: 3, title: 'Prüfung', desc: 'Funktionskontrolle und Justierung' },
     ],
     images: [
-      'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80',
-      'https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80',
-      'https://images.unsplash.com/photo-1534430480872-3498386e7856?w=600&q=80',
+      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-FmayccGVtbWAsTZOtrdzpyPdP4M6vO.png',
+      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-rUEeIVRMla2batUQK7fJgxhUnthiut.png',
+      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-owSLN2GR2jh3HotbP2mhFAg8WDiZjQ.png',
+      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-3biSRqUzkbjbs0FcfCdo1jC5fyLQqN.png',
+      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-NH3CjoSOfX7kSHg3fKTM1dFmB5pQf3.png',
     ],
   },
 ]
@@ -212,6 +284,7 @@ function ServiceModal({ service, onClose }: ServiceModalProps) {
 export function Services() {
   const [selectedService, setSelectedService] = useState<typeof services[0] | null>(null)
   const [isVisible, setIsVisible] = useState(false)
+  const [expandedKitchen, setExpandedKitchen] = useState<string | null>(null)
   const sectionRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
@@ -265,6 +338,62 @@ export function Services() {
               <div className="flex items-center text-gold font-medium">
                 Mehr erfahren
                 <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Kitchen Types Section */}
+        <div className="mt-16">
+          <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-6 text-center">
+            Unsere <span className="text-gold">Küchenformen</span>
+          </h3>
+          
+          {/* Kitchen Type Buttons */}
+          <div className="flex flex-wrap justify-center gap-3 mb-6">
+            {kitchenTypes.map((kitchen) => (
+              <button
+                key={kitchen.id}
+                onClick={() => setExpandedKitchen(expandedKitchen === kitchen.id ? null : kitchen.id)}
+                className={`px-4 py-2 sm:px-6 sm:py-3 rounded-full border-2 font-medium text-sm sm:text-base transition-all duration-300 ${
+                  expandedKitchen === kitchen.id
+                    ? 'border-gold bg-gold/10 text-gold'
+                    : 'border-gold/50 text-gold hover:border-gold hover:bg-gold/5'
+                }`}
+              >
+                {kitchen.name}
+              </button>
+            ))}
+          </div>
+
+          {/* Expanded Kitchen Content */}
+          {kitchenTypes.map((kitchen) => (
+            <div
+              key={kitchen.id}
+              className={`overflow-hidden transition-all duration-500 ease-in-out ${
+                expandedKitchen === kitchen.id ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'
+              }`}
+            >
+              <div className="bg-card border border-border rounded-xl p-4 sm:p-6 lg:p-8">
+                {/* Description */}
+                <p className="text-muted-foreground text-center mb-6 max-w-3xl mx-auto leading-relaxed">
+                  {kitchen.description}
+                </p>
+
+                {/* Images Grid */}
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+                  {kitchen.images.map((img, idx) => (
+                    <div key={idx} className="relative overflow-hidden rounded-lg group/img">
+                      <img
+                        src={img}
+                        alt={`${kitchen.name} Beispiel ${idx + 1}`}
+                        className="w-full h-40 sm:h-48 lg:h-56 object-cover transition-transform duration-500 group-hover/img:scale-110"
+                        crossOrigin="anonymous"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover/img:opacity-100 transition-opacity duration-300" />
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           ))}

@@ -25,7 +25,7 @@ export function Hero() {
   }
 
   return (
-    <section id="startseite" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section id="startseite" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 sm:pt-20">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <img
