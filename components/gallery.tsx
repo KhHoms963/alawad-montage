@@ -3,21 +3,69 @@
 import { useEffect, useRef, useState } from 'react'
 import { X, ChevronLeft, ChevronRight } from 'lucide-react'
 
-const categories = ['Alle', 'Küchen', 'Möbel', 'Trockenbau', 'Türen']
+const categories = ['Alle', 'Küchen', 'Möbel', 'Trockenbau', 'Türen/Fenster', 'Holzhäuser']
 
 const galleryItems = [
-  { id: 1, src: '/images/Screenshot 2026-05-15 155448.png', category: 'Küchen', title: 'Moderne Einbauküche' },
-  { id: 2, src: '/images/Screenshot 2026-05-15 155457.png', category: 'Küchen', title: 'L-Form Küche' },
-  { id: 3, src: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800&q=80', category: 'Möbel', title: 'Wohnzimmer Sofa' },
-  { id: 4, src: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&q=80', category: 'Möbel', title: 'Wohnwand Montage' },
-  { id: 5, src: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80', category: 'Trockenbau', title: 'Trennwand Installation' },
-  { id: 6, src: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80', category: 'Türen', title: 'Innentür Einbau' },
-  { id: 7, src: '/images/Screenshot 2026-05-15 155504.png', category: 'Küchen', title: 'Designer Küche' },
-  { id: 8, src: 'https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=800&q=80', category: 'Möbel', title: 'Büromöbel Aufbau' },
-  { id: 9, src: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800&q=80', category: 'Trockenbau', title: 'Deckenverkleidung' },
-  { id: 10, src: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80', category: 'Türen', title: 'Glastür Montage' },
-  { id: 11, src: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80', category: 'Küchen', title: 'Inselküche' },
-  { id: 12, src: 'https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?w=800&q=80', category: 'Möbel', title: 'Schlafzimmer Set' },
+  // Küchen (a1-a14)
+  { id: 1, src: '/images/a1.jpeg', category: 'Küchen', title: 'Küche 1' },
+  { id: 2, src: '/images/a2.jpeg', category: 'Küchen', title: 'Küche 2' },
+  { id: 3, src: '/images/a3.jpeg', category: 'Küchen', title: 'Küche 3' },
+  { id: 4, src: '/images/a4.jpeg', category: 'Küchen', title: 'Küche 4' },
+  { id: 5, src: '/images/a5.jpeg', category: 'Küchen', title: 'Küche 5' },
+  { id: 6, src: '/images/a6.jpeg', category: 'Küchen', title: 'Küche 6' },
+  { id: 7, src: '/images/a7.jpeg', category: 'Küchen', title: 'Küche 7' },
+  { id: 8, src: '/images/a8.jpeg', category: 'Küchen', title: 'Küche 8' },
+  { id: 9, src: '/images/a9.jpeg', category: 'Küchen', title: 'Küche 9' },
+  { id: 10, src: '/images/a10.jpeg', category: 'Küchen', title: 'Küche 10' },
+  { id: 11, src: '/images/a11.jpeg', category: 'Küchen', title: 'Küche 11' },
+  { id: 12, src: '/images/a12.jpeg', category: 'Küchen', title: 'Küche 12' },
+  { id: 13, src: '/images/a13.jpeg', category: 'Küchen', title: 'Küche 13' },
+  { id: 14, src: '/images/a14.jpeg', category: 'Küchen', title: 'Küche 14' },
+  // Möbel (b1-b15, b11 fehlt)
+  { id: 15, src: '/images/b1.jpeg', category: 'Möbel', title: 'Möbel 1' },
+  { id: 16, src: '/images/b2.jpeg', category: 'Möbel', title: 'Möbel 2' },
+  { id: 17, src: '/images/b3.jpeg', category: 'Möbel', title: 'Möbel 3' },
+  { id: 18, src: '/images/b4.jpeg', category: 'Möbel', title: 'Möbel 4' },
+  { id: 19, src: '/images/b5.jpeg', category: 'Möbel', title: 'Möbel 5' },
+  { id: 20, src: '/images/b6.jpeg', category: 'Möbel', title: 'Möbel 6' },
+  { id: 21, src: '/images/b7.jpg', category: 'Möbel', title: 'Möbel 7' },
+  { id: 22, src: '/images/b8.jpg', category: 'Möbel', title: 'Möbel 8' },
+  { id: 23, src: '/images/b9.jpg', category: 'Möbel', title: 'Möbel 9' },
+  { id: 24, src: '/images/b10.jpg', category: 'Möbel', title: 'Möbel 10' },
+  { id: 25, src: '/images/b12.jpg', category: 'Möbel', title: 'Möbel 12' },
+  { id: 26, src: '/images/b13.jpg', category: 'Möbel', title: 'Möbel 13' },
+  { id: 27, src: '/images/b14.jpg', category: 'Möbel', title: 'Möbel 14' },
+  { id: 28, src: '/images/b15.jpg', category: 'Möbel', title: 'Möbel 15' },
+  // Trockenbau (c1-c13, c11 fehlt)
+  { id: 29, src: '/images/c1.jpeg', category: 'Trockenbau', title: 'Trockenbau 1' },
+  { id: 30, src: '/images/c2.jpeg', category: 'Trockenbau', title: 'Trockenbau 2' },
+  { id: 31, src: '/images/c3.jpeg', category: 'Trockenbau', title: 'Trockenbau 3' },
+  { id: 32, src: '/images/c4.jpeg', category: 'Trockenbau', title: 'Trockenbau 4' },
+  { id: 33, src: '/images/c5.jpeg', category: 'Trockenbau', title: 'Trockenbau 5' },
+  { id: 34, src: '/images/c6.jpeg', category: 'Trockenbau', title: 'Trockenbau 6' },
+  { id: 35, src: '/images/c7.jpeg', category: 'Trockenbau', title: 'Trockenbau 7' },
+  { id: 36, src: '/images/c8.jpeg', category: 'Trockenbau', title: 'Trockenbau 8' },
+  { id: 37, src: '/images/c9.jpeg', category: 'Trockenbau', title: 'Trockenbau 9' },
+  { id: 38, src: '/images/c10.jpeg', category: 'Trockenbau', title: 'Trockenbau 10' },
+  { id: 39, src: '/images/c12.jpeg', category: 'Trockenbau', title: 'Trockenbau 12' },
+  { id: 40, src: '/images/c13.jpeg', category: 'Trockenbau', title: 'Trockenbau 13' },
+  // Holzhäuser (d1-d9)
+  { id: 41, src: '/images/d1.jpeg', category: 'Holzhäuser', title: 'Holzhaus 1' },
+  { id: 42, src: '/images/d2.jpeg', category: 'Holzhäuser', title: 'Holzhaus 2' },
+  { id: 43, src: '/images/d3.jpeg', category: 'Holzhäuser', title: 'Holzhaus 3' },
+  { id: 44, src: '/images/d4.jpeg', category: 'Holzhäuser', title: 'Holzhaus 4' },
+  { id: 45, src: '/images/d5.jpeg', category: 'Holzhäuser', title: 'Holzhaus 5' },
+  { id: 46, src: '/images/d6.jpeg', category: 'Holzhäuser', title: 'Holzhaus 6' },
+  { id: 47, src: '/images/d7.jpeg', category: 'Holzhäuser', title: 'Holzhaus 7' },
+  { id: 48, src: '/images/d8.jpeg', category: 'Holzhäuser', title: 'Holzhaus 8' },
+  { id: 49, src: '/images/d9.jpeg', category: 'Holzhäuser', title: 'Holzhaus 9' },
+  // Türen/Fenster (e1-e5)
+  { id: 50, src: '/images/e1.jpeg', category: 'Türen/Fenster', title: 'Türen/Fenster 1' },
+  { id: 51, src: '/images/e2.jpeg', category: 'Türen/Fenster', title: 'Türen/Fenster 2' },
+  { id: 52, src: '/images/e3.jpeg', category: 'Türen/Fenster', title: 'Türen/Fenster 3' },
+  { id: 53, src: '/images/e4.jpeg', category: 'Türen/Fenster', title: 'Türen/Fenster 4' },
+  { id: 54, src: '/images/e5.jpeg', category: 'Türen/Fenster', title: 'Türen/Fenster 5' },
+
 ]
 
 interface LightboxProps {
@@ -33,23 +81,24 @@ function Lightbox({ items, currentIndex, onClose, onPrev, onNext }: LightboxProp
 
   useEffect(() => {
     document.body.style.overflow = 'hidden'
-    
+    document.documentElement.style.overflow = 'hidden'
+
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose()
       if (e.key === 'ArrowLeft') onPrev()
       if (e.key === 'ArrowRight') onNext()
     }
-    
+
     window.addEventListener('keydown', handleKeyDown)
     return () => {
-      document.body.style.overflow = 'unset'
+      document.body.style.overflow = ''
+      document.documentElement.style.overflow = ''
       window.removeEventListener('keydown', handleKeyDown)
     }
   }, [onClose, onPrev, onNext])
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-background/95 backdrop-blur-md p-4">
-      {/* Close Button */}
       <button
         onClick={onClose}
         className="absolute top-2 right-2 sm:top-4 sm:right-4 z-10 p-2 sm:p-3 bg-card rounded-full hover:bg-secondary transition-colors"
@@ -58,7 +107,6 @@ function Lightbox({ items, currentIndex, onClose, onPrev, onNext }: LightboxProp
         <X className="w-5 h-5 sm:w-6 sm:h-6" />
       </button>
 
-      {/* Navigation Buttons */}
       <button
         onClick={onPrev}
         className="absolute left-2 sm:left-4 z-10 p-2 sm:p-3 bg-card rounded-full hover:bg-secondary transition-colors"
@@ -74,7 +122,6 @@ function Lightbox({ items, currentIndex, onClose, onPrev, onNext }: LightboxProp
         <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
       </button>
 
-      {/* Image */}
       <div className="max-w-5xl max-h-[85vh] px-10 sm:px-16 w-full flex flex-col items-center">
         <img
           src={currentItem.src}
@@ -136,7 +183,6 @@ export function Gallery() {
   return (
     <section id="galerie" ref={sectionRef} className="py-20 sm:py-28 bg-secondary">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
         <div className="text-center mb-12">
           <span className="text-gold text-sm font-semibold tracking-wider uppercase">
             Galerie
@@ -145,12 +191,11 @@ export function Gallery() {
             Unsere <span className="text-gold">Referenzprojekte</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Überzeugen Sie sich selbst von unserer Arbeit. Hier finden Sie eine Auswahl 
+            Überzeugen Sie sich selbst von unserer Arbeit. Hier finden Sie eine Auswahl
             unserer erfolgreich abgeschlossenen Projekte.
           </p>
         </div>
 
-        {/* Filter Buttons */}
         <div className="flex flex-wrap justify-center gap-3 mb-12">
           {categories.map((category) => (
             <button
@@ -167,7 +212,6 @@ export function Gallery() {
           ))}
         </div>
 
-        {/* Gallery Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 sm:gap-4">
           {filteredItems.map((item, index) => (
             <div
@@ -195,7 +239,6 @@ export function Gallery() {
         </div>
       </div>
 
-      {/* Lightbox */}
       {lightboxIndex !== null && (
         <Lightbox
           items={filteredItems}

@@ -107,10 +107,7 @@ const services = [
     images: [
       '/images/Screenshot 2026-05-16 121225.png',
       '/images/Screenshot 2026-05-16 121237.png',
-      '/images/Screenshot 2026-05-16 121246.png',
-      '/images/Screenshot 2026-05-16 121300.png',
       '/images/Screenshot 2026-05-16 121308.png',
-      '/images/Screenshot 2026-05-16 121904.png',
     ],
   },
   {
@@ -126,11 +123,8 @@ const services = [
       { step: 3, title: 'Finish', desc: 'Saubere Übergabe des fertigen Projekts' },
     ],
     images: [
-      '/images/555.png',
       '/images/666.png',
-      '/images/777.png',
       '/images/888.png',
-      '/images/999.png',
       '/images/123.png',
 
     ],
@@ -168,9 +162,6 @@ const services = [
     images: [
       'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-FmayccGVtbWAsTZOtrdzpyPdP4M6vO.png',
       'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-rUEeIVRMla2batUQK7fJgxhUnthiut.png',
-      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-owSLN2GR2jh3HotbP2mhFAg8WDiZjQ.png',
-      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-3biSRqUzkbjbs0FcfCdo1jC5fyLQqN.png',
-      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-NH3CjoSOfX7kSHg3fKTM1dFmB5pQf3.png',
     ],
   },
 ]
