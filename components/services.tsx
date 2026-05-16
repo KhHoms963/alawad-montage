@@ -176,22 +176,20 @@ interface ServiceModalProps {
 function ServiceModal({ service, onClose }: ServiceModalProps) {
   useEffect(() => {
     document.body.style.overflow = 'hidden'
+    document.documentElement.style.overflow = 'hidden'
     return () => {
-      document.body.style.overflow = 'unset'
+      document.body.style.overflow = ''
+      document.documentElement.style.overflow = ''
     }
   }, [])
-
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-      {/* Backdrop */}
       <div
         className="absolute inset-0 bg-background/80 backdrop-blur-sm"
         onClick={onClose}
       />
 
-      {/* Modal */}
       <div className="relative bg-card border border-border rounded-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto mx-2 sm:mx-4">
-        {/* Close Button */}
         <button
           onClick={onClose}
           className="absolute top-2 right-2 sm:top-4 sm:right-4 z-10 p-2 bg-background/80 rounded-full hover:bg-background transition-colors"
@@ -200,7 +198,19 @@ function ServiceModal({ service, onClose }: ServiceModalProps) {
           <X className="w-5 h-5" />
         </button>
 
-        {/* Content FIRST (above images) */}
+        {/* 1. الصور */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-1">
+          {service.images.map((img, idx) => (
+            <img
+              key={idx}
+              src={img}
+              alt={`${service.title} Beispiel ${idx + 1}`}
+              className="w-full h-48 sm:h-56 object-cover"
+              crossOrigin="anonymous"
+            />
+          ))}
+        </div>
+        {/* 2. العنوان والوصف والـ types */}
         <div className="p-4 sm:p-6 lg:p-8">
           <div className="flex items-center gap-3 mb-4">
             <service.icon className="w-6 h-6 sm:w-8 sm:h-8 text-gold flex-shrink-0" />
@@ -213,7 +223,6 @@ function ServiceModal({ service, onClose }: ServiceModalProps) {
             {service.fullDesc}
           </p>
 
-          {/* Service Types */}
           <div className="mb-6 sm:mb-8">
             <h4 className="text-base sm:text-lg font-semibold text-foreground mb-3">Unsere Leistungen:</h4>
             <div className="flex flex-wrap gap-2">
@@ -227,31 +236,31 @@ function ServiceModal({ service, onClose }: ServiceModalProps) {
               ))}
             </div>
           </div>
+        </div>
 
-          {/* Process Steps */}
-          <div className="mb-6 sm:mb-8">
-            <h4 className="text-base sm:text-lg font-semibold text-foreground mb-4">So funktioniert&apos;s:</h4>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
-              {service.process.map((step) => (
-                <div
-                  key={step.step}
-                  className="bg-secondary p-3 sm:p-4 rounded-lg flex sm:flex-col items-start gap-3 sm:gap-0"
-                >
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gold text-primary-foreground rounded-full flex items-center justify-center font-bold sm:mb-3 flex-shrink-0 text-sm sm:text-base">
-                    {step.step}
-                  </div>
-                  <div>
-                    <h5 className="font-semibold text-foreground mb-0.5 sm:mb-1 text-sm sm:text-base">{step.title}</h5>
-                    <p className="text-xs sm:text-sm text-muted-foreground">{step.desc}</p>
-                  </div>
+        {/* 3. So funktioniert's + زر الواتساب */}
+        <div className="p-4 sm:p-6 lg:p-8">
+          <h4 className="text-base sm:text-lg font-semibold text-foreground mb-4">So funktioniert&apos;s:</h4>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 mb-6 sm:mb-8">
+            {service.process.map((step) => (
+              <div
+                key={step.step}
+                className="bg-secondary p-3 sm:p-4 rounded-lg flex sm:flex-col items-start gap-3 sm:gap-0"
+              >
+                <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gold text-primary-foreground rounded-full flex items-center justify-center font-bold sm:mb-3 flex-shrink-0 text-sm sm:text-base">
+                  {step.step}
                 </div>
-              ))}
-            </div>
+                <div>
+                  <h5 className="font-semibold text-foreground mb-0.5 sm:mb-1 text-sm sm:text-base">{step.title}</h5>
+                  <p className="text-xs sm:text-sm text-muted-foreground">{step.desc}</p>
+                </div>
+              </div>
+            ))}
           </div>
 
-          {/* CTA */}
-          <a
-            href={`https://wa.me/4917661589109?text=Hallo, ich interessiere mich für ${service.title}. Können Sie mir ein Angebot machen?`}
+          {/* 4. زر الواتساب آخر شي */}
+          
+            <a href={`https://wa.me/4917661589109?text=Hallo, ich interessiere mich für ${service.title}. Können Sie mir ein Angebot machen?`}
             target="_blank"
             rel="noopener noreferrer"
             className="block"
@@ -263,24 +272,10 @@ function ServiceModal({ service, onClose }: ServiceModalProps) {
           </a>
         </div>
 
-        {/* Image Grid BELOW content */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-1">
-          {service.images.map((img, idx) => (
-            <img
-              key={idx}
-              src={img}
-              alt={`${service.title} Beispiel ${idx + 1}`}
-              className="w-full h-48 sm:h-56 object-cover"
-              crossOrigin="anonymous"
-            />
-          ))}
-        </div>
-
       </div>
-    </div>
-  )
+     </div>
+   )
 }
-
 export function Services() {
   const [selectedService, setSelectedService] = useState<typeof services[0] | null>(null)
   const [isVisible, setIsVisible] = useState(false)
@@ -307,7 +302,6 @@ export function Services() {
   return (
     <section id="leistungen" ref={sectionRef} className="py-20 sm:py-28 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
         <div className="text-center mb-16">
           <span className="text-gold text-sm font-semibold tracking-wider uppercase">
             Unsere Leistungen
@@ -321,7 +315,6 @@ export function Services() {
           </p>
         </div>
 
-        {/* Services Grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service, index) => (
             <div
@@ -343,13 +336,11 @@ export function Services() {
           ))}
         </div>
 
-        {/* Kitchen Types Section */}
         <div className="mt-16">
           <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-6 text-center">
             Unsere <span className="text-gold">Küchenformen</span>
           </h3>
 
-          {/* Kitchen Type Buttons */}
           <div className="flex flex-wrap justify-center gap-3 mb-6">
             {kitchenTypes.map((kitchen) => (
               <button
@@ -366,7 +357,6 @@ export function Services() {
             ))}
           </div>
 
-          {/* Expanded Kitchen Content */}
           {kitchenTypes.map((kitchen) => (
             <div
               key={kitchen.id}
@@ -397,7 +387,6 @@ export function Services() {
         </div>
       </div>
 
-      {/* Modal */}
       {selectedService && (
         <ServiceModal
           service={selectedService}
