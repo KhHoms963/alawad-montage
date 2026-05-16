@@ -13,7 +13,7 @@ export default function DatenschutzPage() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Back Button */}
         <Link href="/">
-          <Button variant="outline" className="mb-8 border-border hover:border-gold hover:text-gold">
+          <Button variant="outline" className="mb-8 border-gold bg-gold text-black font-semibold hover:bg-gold/80 transition-colors">
             <ArrowLeft className="w-4 h-4 mr-2" />
             Zurück zur Startseite
           </Button>

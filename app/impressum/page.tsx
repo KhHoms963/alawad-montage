@@ -13,7 +13,7 @@ export default function ImpressumPage() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Back Button */}
         <Link href="/">
-          <Button variant="outline" className="mb-8 border-border hover:border-gold hover:text-gold">
+          <Button className="mb-8 bg-gold text-black font-semibold hover:bg-gold/80">
             <ArrowLeft className="w-4 h-4 mr-2" />
             Zurück zur Startseite
           </Button>

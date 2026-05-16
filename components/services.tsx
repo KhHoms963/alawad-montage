@@ -161,6 +161,7 @@ const services = [
     ],
     images: [
       'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-FmayccGVtbWAsTZOtrdzpyPdP4M6vO.png',
+      '/images/khaled.jpeg',
       'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-rUEeIVRMla2batUQK7fJgxhUnthiut.png',
     ],
   },
