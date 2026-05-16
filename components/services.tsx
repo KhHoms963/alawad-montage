@@ -80,7 +80,7 @@ const services = [
     title: 'Küchenmontage',
     shortDesc: 'Professionelle Montage Ihrer Traumküche – schnell, sauber und zuverlässig.',
     fullDesc: 'Wir montieren Ihre Küche fachgerecht und termingerecht. Von der Lieferung bis zur fertigen Einbauküche – alles aus einer Hand. Unsere erfahrenen Monteure sorgen für eine präzise Installation aller Komponenten, inklusive Elektro- und Wasseranschlüsse.',
-    types: ['Einbauküchen', 'Küchenzeilen', 'Kochinseln', 'Arbeitsplatten'],
+    types: ['Einzeilige Küchen ', 'Zweizeilige Küchen ', 'L-Form Küchen  ', 'U-Form Küchen ', 'G-Form Küchen ', 'Inselküchen '],
     process: [
       { step: 1, title: 'Beratung', desc: 'Kostenlose Vor-Ort-Beratung und Aufmaß' },
       { step: 2, title: 'Montage', desc: 'Professionelle Installation durch Fachkräfte' },
@@ -105,9 +105,12 @@ const services = [
       { step: 3, title: 'Kontrolle', desc: 'Qualitätsprüfung und Aufräumen' },
     ],
     images: [
-      '/images/Screenshot 2026-05-15 155448.png',
-      '/images/Screenshot 2026-05-15 155457.png',
-      '/images/Screenshot 2026-05-15 155504.png',
+      '/images/Screenshot 2026-05-16 121225.png',
+      '/images/Screenshot 2026-05-16 121237.png',
+      '/images/Screenshot 2026-05-16 121246.png',
+      '/images/Screenshot 2026-05-16 121300.png',
+      '/images/Screenshot 2026-05-16 121308.png',
+      '/images/Screenshot 2026-05-16 121904.png',
     ],
   },
   {
@@ -123,9 +126,13 @@ const services = [
       { step: 3, title: 'Finish', desc: 'Saubere Übergabe des fertigen Projekts' },
     ],
     images: [
-      'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80',
-      'https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=600&q=80',
-      'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=600&q=80',
+      '/images/555.png',
+      '/images/666.png',
+      '/images/777.png',
+      '/images/888.png',
+      '/images/999.png',
+      '/images/123.png',
+
     ],
   },
   {
@@ -141,9 +148,9 @@ const services = [
       { step: 3, title: 'Abschluss', desc: 'Endkontrolle und Übergabe' },
     ],
     images: [
-      'https://images.unsplash.com/photo-1510798831971-661eb04b3739?w=600&q=80',
-      'https://images.unsplash.com/photo-1449158743715-0a90ebb6d2d8?w=600&q=80',
-      'https://images.unsplash.com/photo-1518780664697-55e3ad937233?w=600&q=80',
+      '/images/111.png',
+      '/images/222.png',
+      '/images/333.png',
     ],
   },
   {
