@@ -39,7 +39,7 @@ export default function RootLayout({
               "name": "AL AWAD MONTAGE",
               "description": "Professioneller Innenausbau & Montageservice in Deutschland",
               "telephone": "+49 17661589109",
-              "email": "info@al-awad-montage.de",
+              "email": "kontakt@alawad-montage.de",
               "address": {
                 "@type": "PostalAddress",
                 "addressCountry": "DE"

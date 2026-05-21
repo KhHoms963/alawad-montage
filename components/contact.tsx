@@ -22,8 +22,8 @@ const contactCards = [
   {
     icon: Mail,
     title: 'E-Mail',
-    value: 'info@al-awad-montage.de',
-    link: 'mailto:info@al-awad-montage.de',
+    value: 'kontakt@alawad-montage.de',
+    link: 'mailto:kontakt@alawad-montage.de',
     description: 'Senden Sie uns eine E-Mail',
   },
 ]

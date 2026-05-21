@@ -40,7 +40,7 @@ export default function ImpressumPage() {
               <h2 className="text-xl font-semibold text-foreground mb-4">Kontakt</h2>
               <p>
                 Telefon: +49 176 61589109<br />
-                E-Mail: info@al-awad-montage.de
+                E-Mail: kontakt@alawad-montage.de
               </p>
             </section>
 

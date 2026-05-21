@@ -67,7 +67,7 @@ export function Footer() {
                 <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5 text-gold" />
               </a>
               <a
-                href="mailto:info@al-awad-montage.de"
+                href="mailto:kontakt@alawad-montage.de"
                 className="w-9 h-9 sm:w-10 sm:h-10 bg-secondary rounded-full flex items-center justify-center hover:bg-gold/20 transition-colors"
                 aria-label="E-Mail"
               >
@@ -135,8 +135,8 @@ export function Footer() {
               </li>
               <li className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-gold flex-shrink-0" />
-                <a href="mailto:info@al-awad-montage.de" className="text-sm sm:text-base hover:text-gold transition-colors break-all">
-                  info@al-awad-montage.de
+                <a href="mailto:kontakt@alawad-montage.de" className="text-sm sm:text-base hover:text-gold transition-colors break-all">
+                  kontakt@alawad-montage.de
                 </a>
               </li>
             </ul>
