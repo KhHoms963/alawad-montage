@@ -5,10 +5,11 @@ import { ArrowLeft } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useEffect } from 'react'
 
-export default function ImpressumPage() {
+export default function DatenschutzPage() {
   useEffect(() => {
     const script = document.createElement('script')
-    script.src = 'https://app.privacybee.io/imprint-widget.js'
+    script.src = 'https://app.privacybee.io/widget.js'
+    script.defer = true
     document.body.appendChild(script)
     return () => {
       document.body.removeChild(script)
@@ -29,12 +30,12 @@ export default function ImpressumPage() {
         {/* Content */}
         <div className="bg-card border border-border rounded-xl p-8 sm:p-12">
           <h1 className="text-3xl sm:text-4xl font-bold text-foreground mb-8">
-            <span className="text-gold">Impressum</span>
+            <span className="text-gold">Datenschutzerklärung</span>
           </h1>
 
           <div
             dangerouslySetInnerHTML={{
-              __html: `<imprint-widget website-id="cmpcv8qx10ya4zp2zml016ifv" lang="de"></imprint-widget>`
+              __html: `<privacybee-widget website-id="cmpcv8qx10ya4zp2zml016ifv" type="dsgvo" lang="de"></privacybee-widget>`
             }}
           />
         </div>
