@@ -49,6 +49,10 @@ export default function RootLayout({
             })
           }}
         />
+        <script
+          src="https://app.privacybee.io/cookie-banner.js"
+          website-id="cmpcv8qx10ya4zp2zml016ifv"
+        />
       </head>
       <body className={`${inter.variable} font-sans antialiased`}>
         {children}
