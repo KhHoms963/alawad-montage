@@ -51,7 +51,7 @@ export default function RootLayout({
         />
         <script
           src="https://app.privacybee.io/cookie-banner.js"
-          website-id="cmpcv8qx10ya4zp2zml016ifv"
+          website-id="cmpcv8qx10ya4zp2zml016ifv" lang="de"
         />
       </head>
       <body className={`${inter.variable} font-sans antialiased`}>
