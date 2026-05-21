@@ -161,6 +161,12 @@ export function Footer() {
             >
               Datenschutz
             </Link>
+            <a
+              href="#"
+              className="privacybee-display-preferences text-xs sm:text-sm text-muted-foreground hover:text-gold transition-colors"
+            >
+              Privacy Center
+            </a>
           </div>
         </div>
       </div>
